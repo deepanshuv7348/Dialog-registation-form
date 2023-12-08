@@ -1,0 +1,92 @@
+DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form with Tabs</title>
+    <style>
+        /* Style for the tabs */
+        .tab {
+            display: none;
+        }
+
+        /* Style for the active tab */
+        .tab.active {
+            display: block;
+        }
+
+        /* Style for the tab buttons */
+        .tab-button {
+            cursor: pointer;
+            padding: 10px 20px;
+            background-color: #ddd;
+            border: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+
+        /* Style for the active tab button */
+        .tab-button.active {
+            background-color: #2196F3;
+            color: white;
+        }
+
+        /* Style for the registration form */
+        .registration-form {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="tab-button active" onclick="openTab('Login')">Login</div>
+    <div class="tab-button" onclick="openTab('SignUp')">Sign Up</div>
+
+    <div class="registration-form">
+        <div class="tab Login active">
+            <h2>Login</h2>
+            <form action="login.php" method="post">
+                <!-- Login form fields go here -->
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required><br>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required><br>
+                <input type="submit" value="Login">
+            </form>
+        </div>
+
+        <div class="tab SignUp">
+            <h2>Sign Up</h2>
+            <form action="signup.php" method="post">
+                <!-- Sign-up form fields go here -->
+                <label for="new-username">Username:</label>
+                <input type="text" id="new-username" name="new-username" required><br>
+                <label for="new-password">Password:</label>
+                <input type="password" id="new-password" name="new-password" required><br>
+                <input type="submit" value="Sign Up">
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openTab(tabName) {
+            var i, tabContent, tabButtons;
+
+            tabContent = document.getElementsByClassName("tab");
+            for (i = 0; i < tabContent.length; i++) {
+                tabContent[i].style.display = "none";
+            }
+
+            tabButtons = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove("active");
+            }
+
+            document.querySelector(".tab." + tabName).style.display = "block";
+            document.querySelector(".tab-button." + tabName).classList.add("active");
+        }
+    </script>
+</body>
+</html>
